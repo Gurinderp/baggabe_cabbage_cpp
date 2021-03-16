@@ -16,13 +16,15 @@ int main()
     float hours_worked;
     double pay_rate, gross_pay, tax_amount, net_pay;
     double parking = 7.50;
+    #define TAX_RATE 0.28;
 
     input(first_name, last_name, hours_worked, pay_rate);
     gross_processing(gross_pay, hours_worked, pay_rate);
     tax_processing(tax_amount, gross_pay);
     net_processing(net_pay, tax_amount, gross_pay);
     output_header();
-    output(first_name, last_name, hours_worked, pay_rate, gross_pay, parking);
+    output(first_name, last_name, hours_worked, pay_rate, 
+        gross_pay, parking, tax_amount, net_pay);
 }
 
 void input(std::string& first_name, std::string& last_name, 
@@ -45,12 +47,12 @@ void gross_processing(double& gross_pay, float hours_worked, double pay_rate)
 
 void tax_processing(double& tax_amount, double gross_pay)
 {
-    tax_amount = gross_pay * 0.28;
+    tax_amount = gross_pay * TAX_RATE;
 }
 
 void net_processing(double& net_pay, double tax_amount, double gross_pay)
 {
-    net_pay = gross_pay - tax_amount;
+    net_pay = gross_pay - tax_amount - 7.50;
 }
 
 void output_header()
@@ -69,11 +71,11 @@ void output_header()
 void output(std::string first_name, std::string last_name, float hours_worked, 
     double pay_rate, double gross_pay, double parking, double tax_amount, double net_pay)
 {
-    std::cout << first_name << ", " << last_name
-        << std::setw(19) << hours_worked << "  "
+    std::cout << std::setw(20) << first_name << ", " << last_name << "  "
+        << std::setw(5) << hours_worked << "  "
         << std::setw(6) << pay_rate << "  "
         << std::setw(7) << gross_pay << "  "
+        << std::setw(6) << tax_amount << "  "
         << std::setw(6) << parking << "  "
-        << std::setw(6) << parking << "  "
-        << std::setw(7) << parking;
+        << std::setw(7) << net_pay;
 }
