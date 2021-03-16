@@ -47,11 +47,11 @@ void output_header()
 
 void output(std::string first_name, std::string last_name, float hours_worked, double pay_rate, double gross_pay, double parking)
 {
-    std::cout << std::setw(20) << first_name << ", " << last_name
-        << std::setw(5) << hours_worked
-        << std::setw(6) << pay_rate
-        << std::setw(7) << gross_pay
-        << std::setw(6) << parking
-        << std::setw(6) << parking
+    std::cout << first_name << ", " << last_name
+        << std::setw(19) << hours_worked << "  "
+        << std::setw(6) << pay_rate << "  "
+        << std::setw(7) << gross_pay << "  "
+        << std::setw(6) << parking << "  "
+        << std::setw(6) << parking << "  "
         << std::setw(7) << parking;
 }
